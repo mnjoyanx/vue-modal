@@ -1,7 +1,17 @@
 <template>
-  <div>
-    <v-modal :title="title" />
+  <div class="wrapper">
+    <div class="wrapper--content">
+
+      <section>
+        <div class="container">
+          <button v-if="!isOpen" @click="isOpen = !isOpen" class="btn btn-lg btn-primary">open</button>
+          <v-modal @closeModal="closeModal" :title="title" v-if="isOpen" />        
+        </div>
+      </section>
+      
+    </div>
   </div>
+ 
 </template>
 
 <script>
@@ -14,7 +24,13 @@ export default {
   },
   data() {
     return {
-      title: 'some title'
+      title: 'some title',
+      isOpen: false
+    }
+  },
+  methods: {
+    closeModal() {
+      this.isOpen = false
     }
   }
 }
