@@ -5,7 +5,8 @@
       <section>
         <div class="container">
           <button v-if="!isOpen" @click="isOpen = !isOpen" class="btn btn-lg btn-primary">open</button>
-          <v-modal @closeModal="closeModal" :title="title" v-if="isOpen" />        
+          <v-modal @closeModal="closeModal" :title="title" v-if="isOpen">
+          </v-modal>        
         </div>
       </section>
       

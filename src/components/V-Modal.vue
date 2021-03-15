@@ -11,7 +11,7 @@
 
             <!-- Modal Content -->
             <div class="modal--content">
-
+               
             </div>
             <!-- Modal Content -->
 
@@ -27,6 +27,13 @@
                 type: String,
                 default: 'V-Modal'
             }
+        },
+        mounted() {
+            document.body.addEventListener('keyup', e => {
+                if(e.code === 'Escape')  {
+                    this.$emit('closeModal')
+                }
+            })
         }
     }
 </script>
