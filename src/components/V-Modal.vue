@@ -10,7 +10,11 @@
 
             <!-- Modal Content -->
             <div class="modal--content">
+                <slot name="content" />
+            </div>
 
+            <div class="footer">
+                <slot name="footer" />
             </div>
 
         </div>
