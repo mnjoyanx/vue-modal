@@ -1,12 +1,13 @@
 <template>
-    <div class="modal--wrapper">
-        <div class="modal--content">
+    <div class="modal--wrapper" @click="$emit('closeModal')">
+        <div class="modal--content" @click.stop="">
 
              <!-- Modal Header -->
             <div class="modal--header">
                 <span class="modal--title"> {{ title }} </span>
                 <span class="modal--close" @click="$emit('closeModal')">&#x2715;</span>
             </div>
+            <!-- Modal Header -->
 
             <!-- Modal Content -->
             <div class="modal--content">
@@ -15,7 +16,9 @@
 
             <div class="footer">
                 <slot name="footer" />
+               
             </div>
+            <!-- Modal Content -->
 
         </div>
     </div>
@@ -29,6 +32,13 @@
                 type: String,
                 default: 'V-Modal'
             }
+        },
+        mounted() {
+            document.body.addEventListener('keyup', e => {
+                if(e.code === 'Escape')  {
+                    this.$emit('closeModal')
+                }
+            })
         }
     }
 </script>
@@ -64,7 +74,7 @@
             font-size: 24px
         }
 
-        .button--close {
+        .modal--close {
             cursor: pointer
         }
         .modal--content {   
