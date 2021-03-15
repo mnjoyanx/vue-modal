@@ -1,17 +1,19 @@
 <template>
-    <div class="modal--wrapper">
-        <div class="modal--content">
+    <div class="modal--wrapper" @click="$emit('closeModal')">
+        <div class="modal--content" @click.stop="">
 
              <!-- Modal Header -->
             <div class="modal--header">
                 <span class="modal--title"> {{ title }} </span>
                 <span class="modal--close" @click="$emit('closeModal')">&#x2715;</span>
             </div>
+            <!-- Modal Header -->
 
             <!-- Modal Content -->
             <div class="modal--content">
 
             </div>
+            <!-- Modal Content -->
 
         </div>
     </div>
@@ -60,7 +62,7 @@
             font-size: 24px
         }
 
-        .button--close {
+        .modal--close {
             cursor: pointer
         }
         .modal--content {   
