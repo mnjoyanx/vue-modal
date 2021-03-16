@@ -51,7 +51,6 @@
     
     .modal-enter, .modal-leave-active {
         opacity: 0;
-        
     }
 
     .modal-enter .modal--content,
