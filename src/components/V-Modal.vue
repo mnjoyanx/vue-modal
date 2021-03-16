@@ -1,27 +1,31 @@
 <template>
-    <div class="modal--wrapper" @click="$emit('closeModal')">
-        <div class="modal--content" @click.stop="">
-
-             <!-- Modal Header -->
-            <div class="modal--header">
-                <span class="modal--title"> {{ title }} </span>
-                <span class="modal--close" @click="$emit('closeModal')">&#x2715;</span>
+    <transition name="modal">
+        <div class="modal--wrapper" @click="$emit('closeModal')">
+            <div class="modal--content" @click.stop="">
+    
+                 <!-- Modal Header -->
+                <div class="modal--header">
+                    <span class="modal--title"> {{ title }} </span>
+                    <span class="modal--close" @click="$emit('closeModal')">&#x2715;</span>
+                </div>
+                <!-- Modal Header -->
+    
+                <!-- Modal Content -->
+                <div class="modal--content">
+                    <slot name="content" />
+                </div>
+    
+                <div class="footer">
+                    <slot name="footer" />
+                   
+                </div>
+                <!-- Modal Content -->
+    
             </div>
-            <!-- Modal Header -->
-
-            <!-- Modal Content -->
-            <div class="modal--content">
-                <slot name="content" />
-            </div>
-
-            <div class="footer">
-                <slot name="footer" />
-               
-            </div>
-            <!-- Modal Content -->
-
         </div>
-    </div>
+    </transition>
+       
+   
 </template>
 
 <script>
@@ -44,6 +48,17 @@
 </script>
 
 <style lang="scss" scoped>
+    
+    .modal-enter, .modal-leave-active {
+        opacity: 0;
+        
+    }
+
+    .modal-enter .modal--content,
+    .modal-leave-active .modal--content {
+        transform: scale(1.2);
+    }
+
     .modal--wrapper {
         display: flex;
         justify-content: center;
